@@ -15,8 +15,18 @@ class CreateDeviceColorsTable extends Migration
     {
         Schema::create('device_colors', function (Blueprint $table) {
             $table->id();
-            $table->string('color');
             $table->foreignId('device_id')->nullable()->constrained()->onDelete('cascade');
+            $table->boolean('color_black')->default(0);
+            $table->boolean('color_white')->default(0);
+            $table->boolean('color_silver')->default(0);
+            $table->boolean('color_gold')->default(0);
+            $table->boolean('color_blue')->default(0);
+            $table->boolean('color_grey')->default(0);
+            $table->boolean('color_red')->default(0);
+            $table->boolean('color_green')->default(0);
+            $table->boolean('color_purple')->default(0);
+            $table->boolean('color_pink')->default(0);
+            $table->boolean('color_grey')->default(0);
             $table->timestamps();
         });
     }

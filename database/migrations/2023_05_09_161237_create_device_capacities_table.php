@@ -15,9 +15,15 @@ class CreateDeviceCapacitiesTable extends Migration
     {
         Schema::create('device_capacities', function (Blueprint $table) {
             $table->id();
-            $table->integer('capacity');
-            $table->double('price');
             $table->foreignId('device_id')->nullable()->constrained()->onDelete('cascade');
+            $table->double('capacity_8gb')->nullable();
+            $table->double('capacity_16gb')->nullable();
+            $table->double('capacity_32gb')->nullable();
+            $table->double('capacity_64gb')->nullable();
+            $table->double('capacity_128gb')->nullable();
+            $table->double('capacity_256gb')->nullable();
+            $table->double('capacity_512gb')->nullable();
+            $table->double('capacity_1tb')->nullable();
             $table->timestamps();
         });
     }

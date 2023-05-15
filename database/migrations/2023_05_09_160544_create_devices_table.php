@@ -18,6 +18,7 @@ class CreateDevicesTable extends Migration
             $table->string('name');
             $table->string('picture');
             $table->foreignId('device_type_id')->nullable()->constrained()->onDelete('cascade');
+            $table->double('main_price');
             $table->timestamps();
         });
     }
