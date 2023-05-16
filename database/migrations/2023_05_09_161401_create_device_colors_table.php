@@ -26,7 +26,6 @@ class CreateDeviceColorsTable extends Migration
             $table->boolean('color_green')->default(0);
             $table->boolean('color_purple')->default(0);
             $table->boolean('color_pink')->default(0);
-            $table->boolean('color_grey')->default(0);
             $table->timestamps();
         });
     }

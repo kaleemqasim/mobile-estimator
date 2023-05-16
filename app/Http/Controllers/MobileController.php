@@ -21,7 +21,7 @@ class MobileController extends Controller
     }
 
      public function estimator($device_id) {
-         $device = Device::where('id', $device_id)->with(['capacities', 'colors'])->first();
+         $device = Device::where('id', $device_id)->with(['capacity', 'color','device_health','screen_problem','back_side_probem'])->first();
          $settings = EstimateSetting::pluck('value', 'name')->toArray();
          return view('mobile_estimator.estimator', compact('device', 'settings'));
      }

@@ -41,27 +41,75 @@
                                                 <div class="col-md-6">
                                                     <div class="boxes">
                                                         <h5>Choose the squeezing capacity</h5>
-                                                        @foreach($device->capacities as $key=>$capacity)
-                                                            <input value="{{$capacity->capacity}}" data-price="{{$capacity->price}}" type="radio" class="btn-check" name="capacity-input" id="check{{$key}}" autocomplete="off" checked="">
-                                                            <label class="btn btn-light" for="check{{$key}}">{{$capacity->capacity}}</label>
-                                                        @endforeach
+                                                        @php
+                                                            $capacities_html= "";
+                                                            $capacities = [
+                                                                'capacity_8gb'=>'8gb',
+                                                                'capacity_16gb'=>'16gb',
+                                                                'capacity_32gb'=>'32gb',
+                                                                'capacity_64gb'=>'64gb',
+                                                                'capacity_128gb'=>'128gb',
+                                                                'capacity_256gb'=>'256gb',
+                                                                'capacity_512gb'=>'512gb',
+                                                                'capacity_1tb'=>'1tb'
+                                                            ];
+
+                                                            if($device->capacity) {
+                                                                foreach($capacities as $key =>$capacity){
+                                                                    if($device->capacity[$key]) {
+                                                                        $capacities_html .= '<input value="' . $capacity . '" data-price="' . $device->capacity[$key] . '" type="radio" class="btn-check" name="capacity-input" id="check' . $key . '" autocomplete="off" checked="">
+                            <label class="btn btn-light" for="check' . $key . '">' . $capacity . '</label>';
+                                                                    }
+
+                                                                    if($device->capacity[$key] == 0) {
+                                                                        $capacities_html .= '<input checked value="' . $capacity . '" data-price="' . $device->capacity[$key] . '" type="radio" class="btn-check" name="capacity-input" id="check' . $key . '" autocomplete="off" checked="">
+                            <label class="btn btn-light" for="check' . $key . '">' . $capacity . '</label>';
+                                                                        break;
+                                                                    }
+
+
+                                                                }
+                                                            }
+
+
+                                                        @endphp
+
+                                                        @php
+                                                            echo $capacities_html;
+                                                        @endphp
 
                                                         <h5 class="mt-4">Choose the color</h5>
-                                                        <input type="radio" class="btn-check" name="options-outlined-2" id="check4" autocomplete="off" checked="">
-                                                        <label class="btn btn-light" for="check4">
-                                                            <span class="purple"></span>
-                                                            <p>Purple</p>
-                                                        </label>
-                                                        <input type="radio" class="btn-check" name="options-outlined-2" id="check5" autocomplete="off">
-                                                        <label class="btn btn-light" for="check5">
-                                                            <span class="starlight"></span>
-                                                            <p>Starlight</p>
-                                                        </label>
-                                                        <input type="radio" class="btn-check" name="options-outlined-2" id="check6" autocomplete="off">
-                                                        <label class="btn btn-light" for="check6">
-                                                            <span class="red"></span>
-                                                            <p>Purple</p>
-                                                        </label>
+                                                        @php
+                                                            $color_html= "";
+
+                                                                $colors = [
+                                                                    'color_red' => 'red',
+                                                                    'color_black' => 'black',
+                                                                    'color_white' => 'white',
+                                                                    'color_silver' => 'silver',
+                                                                    'color_gold' => 'gold',
+                                                                    'color_blue' => 'blue',
+                                                                    'color_grey' => 'grey',
+                                                                    'color_green' => 'green',
+                                                                    'color_purple' => 'purple',
+                                                                    'color_pink' => 'pink'
+                                                                    ];
+
+                                                                if ($device->color) {
+                                                                foreach ($colors as $key => $color) {
+                                                                     if ($device->color[$key] == 1) {
+                                                                         $color_html .= '<input type="radio" class="btn-check" name="options-outlined-2" id="check' . $key . '" autocomplete="off" checked="">
+                                                                              <label class="btn btn-light" for="check' . $key . '">
+                                                                                     <span class="' . $color . '" style="background-color:' . $color . ';"></span>
+                                                                                         <p>' . ucfirst($color) . '</p>
+                                                                              </label>';
+                                                                          }
+                                                                      }
+                                                                    }
+                                                        @endphp
+                                                        @php
+                                                            echo $color_html;
+                                                        @endphp
                                                     </div>
                                                 </div>
                                             </div>
@@ -117,13 +165,13 @@
                                                     <div class="boxes">
                                                         <h5>2. Battery health is: <span data-bs-toggle="tooltip" data-placement="top" title="Go to settings -> battery and you will see the battery health percentage">?</span></h5>
                                                         <div class="form-check">
-                                                            <input value="yes" class="form-check-input" type="radio" name="battery-test" id="flexRadioDefault3">
+                                                            <input value="{{$device->device_health->above_85 ?? 0}}" class="form-check-input" type="radio" name="battery-test" id="flexRadioDefault3" checked>
                                                             <label class="form-check-label" for="flexRadioDefault3">
                                                                 between 100% and 85%
                                                             </label>
                                                         </div>
                                                         <div class="form-check">
-                                                            <input value="no" class="form-check-input" type="radio" name="battery-test" id="flexRadioDefault4" checked>
+                                                            <input value="{{$device->device_health->below_85 ?? 0}}" class="form-check-input" type="radio" name="battery-test" id="flexRadioDefault4">
                                                             <label class="form-check-label" for="flexRadioDefault4">
                                                                 less than 85%
                                                             </label>
@@ -183,25 +231,25 @@
                                                     <div class="boxes">
                                                         <h5>4. What does the SCREEN of the device look like</h5>
                                                         <div class="form-check">
-                                                            <input value="" class="form-check-input" type="radio" name="screen-test" id="flexRadioDefault7" checked>
+                                                            <input value="0" class="form-check-input" type="radio" name="screen-test" id="flexRadioDefault7" checked>
                                                             <label class="form-check-label" for="flexRadioDefault7">
                                                                 it shows no visible signs of use
                                                             </label>
                                                         </div>
                                                         <div class="form-check">
-                                                            <input value="screen_fine_traces" class="form-check-input" type="radio" name="screen-test" id="flexRadioDefault8">
+                                                            <input value="{{$device->screen_problem->screen_fine_traces ?? 0}}" class="form-check-input" type="radio" name="screen-test" id="flexRadioDefault8">
                                                             <label class="form-check-label" for="flexRadioDefault8">
                                                                 some fine traces
                                                             </label>
                                                         </div>
                                                         <div class="form-check">
-                                                            <input value="screen_visible_marks" class="form-check-input" type="radio" name="screen-test" id="flexRadioDefault9">
+                                                            <input value="{{$device->screen_problem->screen_visible_marks ?? 0}}" class="form-check-input" type="radio" name="screen-test" id="flexRadioDefault9">
                                                             <label class="form-check-label" for="flexRadioDefault9">
                                                                 visible marks (semi-deep)
                                                             </label>
                                                         </div>
                                                         <div class="form-check">
-                                                            <input value="screen_very_visible_marks" class="form-check-input" type="radio" name="screen-test" id="flexRadioDefault10">
+                                                            <input value="{{$device->screen_problem->screen_very_visible_marks ?? 0}}" class="form-check-input" type="radio" name="screen-test" id="flexRadioDefault10">
                                                             <label class="form-check-label" for="flexRadioDefault10">
                                                                 very visible (deep) scratches
                                                             </label>
@@ -228,25 +276,25 @@
                                                     <div class="boxes">
                                                         <h5>5. What do the BACK and SIDES of the device look like</h5>
                                                         <div class="form-check">
-                                                            <input value="" class="form-check-input" type="radio" name="back-side-test" id="flexRadioDefault11" checked>
+                                                            <input value="0" class="form-check-input" type="radio" name="back-side-test" id="flexRadioDefault11" checked>
                                                             <label class="form-check-label" for="flexRadioDefault11">
                                                                 it shows no visible signs of use
                                                             </label>
                                                         </div>
                                                         <div class="form-check">
-                                                            <input value="back_side_fine_traces" class="form-check-input" type="radio" name="back-side-test" id="flexRadioDefault12">
+                                                            <input value="{{$device->back_side_probem->back_side_fine_traces ?? 0}}" class="form-check-input" type="radio" name="back-side-test" id="flexRadioDefault12">
                                                             <label class="form-check-label" for="flexRadioDefault12">
                                                                 some fine traces
                                                             </label>
                                                         </div>
                                                         <div class="form-check">
-                                                            <input value="back_side_visible_marks" class="form-check-input" type="radio" name="back-side-test" id="flexRadioDefault13">
+                                                            <input value="{{$device->back_side_probem->back_side_visible_marks ?? 0}}" class="form-check-input" type="radio" name="back-side-test" id="flexRadioDefault13">
                                                             <label class="form-check-label" for="flexRadioDefault13">
                                                                 visible marks (semi-deep)
                                                             </label>
                                                         </div>
                                                         <div class="form-check">
-                                                            <input value="back_side_very_visible_marks" class="form-check-input" type="radio" name="back-side-test" id="flexRadioDefault14">
+                                                            <input value="{{$device->back_side_probem->back_side_very_visible_marks ?? 0}}" class="form-check-input" type="radio" name="back-side-test" id="flexRadioDefault14">
                                                             <label class="form-check-label" for="flexRadioDefault14">
                                                                 very visible (deep) scratches
                                                             </label>
@@ -344,6 +392,9 @@
                                         </div>
                                     </div>
                                 </fieldset>
+
+                                <p>Estimated price: <span id="price-tag"></span></p>
+
                             </form>
                         </div>
                     </div>
@@ -364,16 +415,36 @@
             console.log(device);
             console.log(settings);
 
-            var selected_capacity = device.capacities.length ? device.capacities[0].capacity : 0;
-            var selected_capacity_price = device.capacities.length ? device.capacities[0].price : 0;
+            let all_capacities = {
+                'capacity_8gb':'8gb',
+                'capacity_16gb':'16gb',
+                'capacity_32gb':'32gb',
+                'capacity_64gb':'64gb',
+                'capacity_128gb':'128gb',
+                'capacity_256gb':'256gb',
+                'capacity_512gb':'512gb',
+                'capacity_1tb':'1tb'
+            };
+
+
+            var selected_capacity = null;
+            var selected_capacity_price = 0;
             var selected_liquid_test = null;
             var selected_battery_test = null;
             var selected_optimal_test = null;
             var selected_screen_test = null;
             var selected_purchase_test = null;
             var selected_back_side_test = null;
-            var estimated_price = 0;
+            var estimated_price = "{{$device->main_price}}";
             var current_step = 1;
+
+            $('#price-tag').html(estimated_price)
+
+            for (const [key, value] of Object.entries(all_capacities)) {
+                if(device.capacity[key] == 0) {
+                    selected_capacity = value;
+                }
+            }
             $(document).ready(function() {
                 $.ajaxSetup({
                     headers: {
@@ -403,11 +474,12 @@
                 });
 
                 $('input[name="battery-test"]').change(function() {
-                    if($(this).val() == 'yes') {
-                        selected_battery_test = true
-                    } else {
-                        selected_battery_test = false
-                    }
+                    selected_battery_test = $(this).val();
+                    // if($(this).val() == 'yes') {
+                    //     selected_battery_test = true
+                    // } else {
+                    //     selected_battery_test = false
+                    // }
                     estimate();
                 });
 
@@ -496,23 +568,26 @@
             });
 
             function estimate() {
+                estimated_price = "{{$device->main_price}}";
                 if(selected_capacity_price) {
                     estimated_price = parseFloat(selected_capacity_price);
                 }
 
-                if(selected_battery_test === false) {
-                    estimated_price = estimated_price - (estimated_price * (parseInt(settings.battery_less_85_deduction)/100))
+                if(selected_battery_test) {
+                    estimated_price = estimated_price - (parseInt(selected_battery_test))
                 }
 
                 if(selected_screen_test && selected_screen_test !== "") {
-                    estimated_price = estimated_price - (estimated_price * (parseInt(settings[selected_screen_test])/100))
+                    estimated_price = estimated_price - (parseInt(selected_screen_test))
                 }
 
                 if(selected_back_side_test && selected_back_side_test !== "") {
-                    estimated_price = estimated_price - (estimated_price * (parseInt(settings[selected_back_side_test])/100))
+                    estimated_price = estimated_price - (parseInt(selected_back_side_test))
                 }
 
                 console.log(estimated_price)
+
+                $('#price-tag').html(estimated_price)
             }
         </script>
 @endsection
