@@ -59,11 +59,11 @@
                                                                 if ($device->color) {
                                                                 foreach ($colors as $key => $color) {
                                                                      if ($device->color[$key] == 1) {
-                                                                         $color_html .= '<input type="radio" class="btn-check" name="color-pick" id="check' . $key . '" value="' . $color . '" autocomplete="off" checked="">
+                                                                         $color_html .= '<div class="color-radio"><input type="radio" class="btn-check" name="color-pick" id="check' . $key . '" value="' . $color . '" autocomplete="off" checked="">
                                                                               <label class="btn btn-light-radio" for="check' . $key . '">
                                                                                      <span class="' . $color . '" style="background-color:' . $color . ';"></span>
                                                                                      </label>
-                                                                                         <p>' . ucfirst($color) . '</p>
+                                                                                         <p>' . ucfirst($color) . '</p></div>
                                                                               ';
                                                                           }
                                                                       }
