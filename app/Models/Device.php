@@ -9,6 +9,8 @@ class Device extends Model
 {
     use HasFactory;
 
+    protected $guarded = [];
+
     public function device_type() {
         return $this->hasOne(DeviceType::class, 'id', 'device_type_id');
     }

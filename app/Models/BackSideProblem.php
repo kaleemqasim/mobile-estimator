@@ -8,4 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class BackSideProblem extends Model
 {
     use HasFactory;
+
+    protected $guarded = [];
 }

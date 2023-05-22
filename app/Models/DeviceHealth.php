@@ -10,4 +10,5 @@ class DeviceHealth extends Model
     use HasFactory;
 
     protected $table = 'device_health';
+    protected $guarded = [];
 }
