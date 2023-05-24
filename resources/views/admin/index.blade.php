@@ -19,7 +19,7 @@
                                         <h5 class="card-title">{{$device->name}}</h5>
                                     </div>
                                     <div class="card-footer">
-                                        <small class="text-muted">Maximum prices 3000 lei - 3500 lei</small>
+                                        <small class="text-muted">Maximum prices {{$device->main_price}}</small>
                                     </div>
                                 </div>
                             </a>

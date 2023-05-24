@@ -15,7 +15,7 @@
     <div class="phoneSpecs questionarie">
         <div class="container">
             <div class="heading">
-                <h1>Choose {{$device->name}} specs</h1>
+                <h1>Choose {{$device->name}}<span id="device_variant"></span> specs</h1>
                 <p>At the end of the form you will receive the price estimate.</p>
             </div>
             <div class="container-fluid">
@@ -344,7 +344,7 @@
                                     <input type="button" name="previous" class="previous action-button-previous"
                                            value="Previous"/>
                                 </fieldset>
-                                <fieldset>
+                                <fieldset id="screen-fieldset">
                                     <div class="form-card">
                                         <h2 class="stepNumber">40%</h2>
                                         <div class="capacity">
@@ -397,11 +397,11 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <input type="button" name="next" class="next action-button" value="Next"/>
-                                    <input type="button" name="previous" class="previous action-button-previous"
+                                    <input id="screen-fieldset-next" type="button" name="next" class="next action-button" value="Next"/>
+                                    <input id="screen-fieldset-prev" type="button" name="previous" class="previous action-button-previous"
                                            value="Previous"/>
                                 </fieldset>
-                                <fieldset>
+                                <fieldset id="backside-fieldset">
                                     <div class="form-card">
                                         <h2 class="stepNumber">50%</h2>
                                         <div class="capacity">
@@ -455,8 +455,8 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <input type="button" name="next" class="next action-button" value="Next"/>
-                                    <input type="button" name="previous" class="previous action-button-previous"
+                                    <input id="backside-fieldset-next" type="button" name="next" class="next action-button" value="Next"/>
+                                    <input id="backside-fieldset-next" type="button" name="previous" class="previous action-button-previous"
                                            value="Previous"/>
                                 </fieldset>
                                 <fieldset>
@@ -604,6 +604,8 @@
                 var current_step = 1;
                 var selected_color = null;
 
+                var has_problems = false;
+
                 $('#price-tag').html(estimated_price)
 
                 for (const [key, value] of Object.entries(all_capacities)) {
@@ -626,15 +628,15 @@
 
                     $('input[name="liquid-test"]').change(function () {
                         if ($(this).val() == 'yes') {
-                            calert('Error', 'Your phone does not meet the requirement', 'error')
-                            $('.action-button').prop('disabled', true)
-                            $('.action-button').addClass('action-button-disabled')
-                            $('.action-button').removeClass('action-button')
+                            // calert('Error', 'Your phone does not meet the requirement', 'error')
+                            // $('.action-button').prop('disabled', true)
+                            // $('.action-button').addClass('action-button-disabled')
+                            // $('.action-button').removeClass('action-button')
                             selected_liquid_test = true
                         } else {
-                            $('.action-button-disabled').prop('disabled', false)
-                            $('.action-button-disabled').addClass('action-button')
-                            $('.action-button').removeClass('action-button-disabled')
+                            // $('.action-button-disabled').prop('disabled', false)
+                            // $('.action-button-disabled').addClass('action-button')
+                            // $('.action-button').removeClass('action-button-disabled')
                             selected_liquid_test = false
                         }
                     });
@@ -651,27 +653,44 @@
 
                     $('input[name="optimal-test"]').change(function () {
                         if ($(this).val() == 'no') {
-                            calert('Error', 'Your phone does not meet the requirement', 'error')
-                            $('.action-button').prop('disabled', true)
-                            $('.action-button').addClass('action-button-disabled')
-                            $('.action-button').removeClass('action-button')
+                            // calert('Error', 'Your phone does not meet the requirement', 'error')
+                            // $('.action-button').prop('disabled', true)
+                            // $('.action-button').addClass('action-button-disabled')
+                            // $('.action-button').removeClass('action-button')
                             selected_optimal_test = true
                         } else {
-                            $('.action-button-disabled').prop('disabled', false);
-                            $('.action-button-disabled').addClass('action-button')
-                            $('.action-button').removeClass('action-button-disabled')
+                            // $('.action-button-disabled').prop('disabled', false);
+                            // $('.action-button-disabled').addClass('action-button')
+                            // $('.action-button').removeClass('action-button-disabled')
                             selected_optimal_test = false
                         }
                     });
 
                     $('input[name="previous"]').click(function () {
                         current_step -= 1;
-                        check_disabled_next()
+                        if(current_step == 6 && selected_optimal_test) {
+                            current_step -= 1;
+                            $('#backside-fieldset-prev').click();
+                            $('#screen-fieldset-prev').click();
+                            $('#backside-fieldset').css({"display":"none","opacity":"0"})
+                            $('#screen-fieldset').css({"display":"none","opacity":"0"})
+                        }
+                        // check_disabled_next()
                     });
 
                     $('input[name="next"]').click(function () {
                         current_step += 1;
-                        check_disabled_next()
+                        if(current_step == 5 && selected_optimal_test) {
+                            // current_step += 1;
+                            $('#screen-fieldset-next').click();
+                            $('#screen-fieldset').css({"display":"none","opacity":"0"})
+                            $('#backside-fieldset-next').click();
+                            $('#backside-fieldset').css({"display":"none","opacity":"0"})
+                        }
+                        if(current_step == 2) {
+                            $('#device_variant').html(` ${selected_capacity} ${selected_color}`)
+                        }
+                        // check_disabled_next()
                     });
 
                     function check_disabled_next() {
