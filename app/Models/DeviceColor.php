@@ -10,4 +10,5 @@ class DeviceColor extends Model
     use HasFactory;
 
     protected $guarded = [];
+
 }

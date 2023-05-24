@@ -12,7 +12,7 @@
                 <div class="row row-cols-1 row-cols-sm-1 row-cols-md-4 row-cols-lg-5 row-cols-xl-5">
                     @foreach($devices as $device)
                         <div class="col">
-                            <a href="{{route('estimator.calculate', $device->id)}}">
+                            <a href="{{route('admin.device.edit', $device->id)}}">
                                 <div class="card">
                                     <img src="{{asset('uploads/'.$device->picture)}}" class="card-img-top" alt="modal">
                                     <div class="card-body">

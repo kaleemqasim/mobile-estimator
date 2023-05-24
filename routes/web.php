@@ -24,4 +24,6 @@ Route::get('/estimator/{id}', [MobileController::class, 'estimator'])->name('est
 Route::post('/estimator', [MobileController::class, 'store_estimation'])->name('estimator.store_estimation');
 Route::get('/device',[MobileController::class,'addDevice'])->name('device');
 Route::post('/add-device',[MobileController::class,'storeDevice'])->name('store-device');
-Route::get('/devices',[MobileController::class,'getDevices'])->name('devices');
+Route::get('/devices',[MobileController::class,'adminDevices'])->name('admin.devices');
+Route::get('/device/{id}',[MobileController::class,'editDevice'])->name('admin.device.edit');
+Route::post('/device/update/{id}',[MobileController::class,'updateDevice'])->name('admin.device.update');
