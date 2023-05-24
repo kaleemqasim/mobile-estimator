@@ -31,9 +31,8 @@
                                     <img src="{{asset('uploads/'.$device->picture)}}" class="card-img-top" alt="modal">
                                     <div class="card-body">
                                         <h5 class="card-title">{{$device->name}}</h5>
-                                    </div>
-                                    <div class="card-footer">
-                                        <small class="text-muted">Maximum prices 3000 lei - 3500 lei</small>
+                                        <hr>
+                                        <small class="text-muted">Up To 3500 Lei</small>
                                     </div>
                                 </div>
                             </a>

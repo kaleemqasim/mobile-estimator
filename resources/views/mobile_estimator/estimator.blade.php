@@ -38,6 +38,14 @@
                                                     <h4>Configuration IPhone 13 Pro Max</h4>
                                                 </div>
                                                 <div class="col-md-6">
+                                                    <div class="modalImg">
+                                                        <img src="{{asset('images/'.$device->picture)}}"
+                                                             alt="modalDetail">
+                                                        {{--                                                                                                                <p>Estimated: $300</p>--}}
+                                                        <p>Estimated price: <span id="price-tag"></span></p>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
                                                     <div class="boxes">
                                                         <h5>Color</h5>
                                                         @php
@@ -126,13 +134,7 @@
                                                         {{--                                                                                                                <label class="btn btn-light" for="check05">Foregin Opreator</label>--}}
                                                     </div>
                                                 </div>
-                                                <div class="col-md-6">
-                                                    <div class="modalImg">
-                                                        <img src="{{asset('images/'.$device->picture)}}"
-                                                             alt="modalDetail">
-                                                        {{--                                                                                                                <p>Estimated: $300</p>--}}
-                                                    </div>
-                                                </div>
+                                                
                                             </div>
                                         </div>
                                     </div>
@@ -236,6 +238,7 @@
                                                     <div class="modalImg">
                                                         <img src="{{asset('images/'.$device->picture)}}"
                                                              alt="modalDetail">
+                                                             <p>Estimated price: <span id="price-tag"></span></p>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
@@ -274,11 +277,12 @@
                                                     <div class="modalImg">
                                                         <img src="{{asset('images/'.$device->picture)}}"
                                                              alt="modalDetail">
+                                                             <p>Estimated price: <span id="price-tag"></span></p>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="boxes">
-                                                        <h5>2. Battery health is: <span data-bs-toggle="tooltip"
+                                                        <h5 class="d-flex align-items-center justify-content-between">2. Battery health is: <span data-bs-toggle="tooltip"
                                                                                         data-placement="top"
                                                                                         title="Go to settings -> battery and you will see the battery health percentage">?</span>
                                                         </h5>
@@ -316,6 +320,7 @@
                                                     <div class="modalImg">
                                                         <img src="{{asset('images/'.$device->picture)}}"
                                                              alt="modalDetail">
+                                                             <p>Estimated price: <span id="price-tag"></span></p>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
@@ -353,6 +358,7 @@
                                                     <div class="modalImg">
                                                         <img src="{{asset('images/'.$device->picture)}}"
                                                              alt="modalDetail">
+                                                             <p>Estimated price: <span id="price-tag"></span></p>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
@@ -410,6 +416,7 @@
                                                     <div class="modalImg">
                                                         <img src="{{asset('images/'.$device->picture)}}"
                                                              alt="modalDetail">
+                                                             <p>Estimated price: <span id="price-tag"></span></p>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
@@ -468,6 +475,7 @@
                                                     <div class="modalImg">
                                                         <img src="{{asset('images/'.$device->picture)}}"
                                                              alt="modalDetail">
+                                                             <p>Estimated price: <span id="price-tag"></span></p>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
@@ -509,6 +517,7 @@
                                                     <div class="modalImg">
                                                         <img src="{{asset('images/'.$device->picture)}}"
                                                              alt="modalDetail">
+                                                             <p>Estimated price: <span id="price-tag"></span></p>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
@@ -557,9 +566,6 @@
                                         </div>
                                     </div>
                                 </fieldset>
-
-                                <p>Estimated price: <span id="price-tag"></span></p>
-
                             </form>
                         </div>
                     </div>
