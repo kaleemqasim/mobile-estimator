@@ -668,7 +668,7 @@
 
                     $('input[name="previous"]').click(function () {
                         current_step -= 1;
-                        if(current_step == 6 && selected_optimal_test) {
+                        if(current_step == 6 && !selected_optimal_test) {
                             current_step -= 1;
                             $('#backside-fieldset-prev').click();
                             $('#screen-fieldset-prev').click();
@@ -680,7 +680,7 @@
 
                     $('input[name="next"]').click(function () {
                         current_step += 1;
-                        if(current_step == 5 && selected_optimal_test) {
+                        if(current_step == 5 && !selected_optimal_test) {
                             // current_step += 1;
                             $('#screen-fieldset-next').click();
                             $('#screen-fieldset').css({"display":"none","opacity":"0"})
