@@ -25,13 +25,22 @@
                             <form id="msform">
                                 <div class="progress">
                                     <div class="progress-bar progress-bar-animated" role="progressbar" aria-valuemin="0"
-                                         aria-valuemax="100"></div>
+                                         aria-valuemax="100">
+                                         <span></span>
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                        </div>
                                 </div>
                                 <br>
                                 <!-- fieldsets -->
                                 <fieldset>
                                     <div class="form-card">
-                                        <h2 class="stepNumber">0%</h2>
                                         <div class="capacity">
                                             <div class="row">
                                                 <div class="text-center">
@@ -82,6 +91,7 @@
                                                             echo $color_html;
                                                         @endphp
                                                         </div>
+                                                        <hr>
                                                         <h5 class="mt-4 d-flex align-items-center justify-content-between">
                                                             Capacity <span data-bs-toggle="tooltip" data-placement="top"
                                                                            title="I'm a Working Tooltip">?</span></h5>
@@ -142,7 +152,6 @@
                                 </fieldset>
                                 {{--                                <fieldset>--}}
                                 {{--                                    <div class="form-card">--}}
-                                {{--                                        <h2 class="stepNumber">0%</h2>--}}
                                 {{--                                        <div class="capacity">--}}
                                 {{--                                            <div class="row">--}}
                                 {{--                                                <div class="col-md-6">--}}
@@ -231,7 +240,6 @@
                                 {{--                                </fieldset>--}}
                                 <fieldset>
                                     <div class="form-card">
-                                        <h2 class="stepNumber">10%</h2>
                                         <div class="capacity">
                                             <div class="row">
                                                 <div class="col-md-6">
@@ -270,7 +278,6 @@
                                 </fieldset>
                                 <fieldset>
                                     <div class="form-card">
-                                        <h2 class="stepNumber">20%</h2>
                                         <div class="capacity">
                                             <div class="row">
                                                 <div class="col-md-6">
@@ -313,7 +320,6 @@
                                 </fieldset>
                                 <fieldset>
                                     <div class="form-card">
-                                        <h2 class="stepNumber">30%</h2>
                                         <div class="capacity">
                                             <div class="row">
                                                 <div class="col-md-6">
@@ -351,7 +357,6 @@
                                 </fieldset>
                                 <fieldset id="screen-fieldset">
                                     <div class="form-card">
-                                        <h2 class="stepNumber">40%</h2>
                                         <div class="capacity">
                                             <div class="row">
                                                 <div class="col-md-6">
@@ -409,7 +414,6 @@
                                 </fieldset>
                                 <fieldset id="backside-fieldset">
                                     <div class="form-card">
-                                        <h2 class="stepNumber">50%</h2>
                                         <div class="capacity">
                                             <div class="row">
                                                 <div class="col-md-6">
@@ -468,7 +472,6 @@
                                 </fieldset>
                                 <fieldset>
                                     <div class="form-card">
-                                        <h2 class="stepNumber">60%</h2>
                                         <div class="capacity">
                                             <div class="row">
                                                 <div class="col-md-6">
@@ -511,7 +514,6 @@
 
                                 <fieldset>
                                     <div class="form-card">
-                                        <h2 class="stepNumber">90%</h2>
                                         <br><br>
                                         <div class="capacity">
                                             <div class="row">
@@ -530,7 +532,6 @@
 
                                 <fieldset>
                                     <div class="form-card">
-                                        <h2 class="stepNumber">95%</h2>
                                         <div class="capacity">
                                             <div class="row">
                                                 <div class="col-md-6">
@@ -570,7 +571,6 @@
 
                                 <fieldset>
                                     <div class="form-card">
-                                        <h2 class="stepNumber">100%</h2>
                                         <br><br>
                                         <div class="capacity">
                                             <div class="row">
