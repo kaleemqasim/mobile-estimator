@@ -39,10 +39,10 @@
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="modalImg">
-                                                        <img src="{{asset('images/'.$device->picture)}}"
+                                                        <img src="{{asset('uploads/'.$device->picture)}}"
                                                              alt="modalDetail">
                                                         {{--                                                                                                                <p>Estimated: $300</p>--}}
-                                                        <p>Estimated price: <span id="price-tag"></span></p>
+                                                        <p>Estimated price: <span class="price-tag"></span></p>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
@@ -134,7 +134,7 @@
                                                         {{--                                                                                                                <label class="btn btn-light" for="check05">Foregin Opreator</label>--}}
                                                     </div>
                                                 </div>
-                                                
+
                                             </div>
                                         </div>
                                     </div>
@@ -236,9 +236,9 @@
                                             <div class="row">
                                                 <div class="col-md-6">
                                                     <div class="modalImg">
-                                                        <img src="{{asset('images/'.$device->picture)}}"
+                                                        <img src="{{asset('uploads/'.$device->picture)}}"
                                                              alt="modalDetail">
-                                                             <p>Estimated price: <span id="price-tag"></span></p>
+                                                             <p>Estimated price: <span class="price-tag"></span></p>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
@@ -275,9 +275,9 @@
                                             <div class="row">
                                                 <div class="col-md-6">
                                                     <div class="modalImg">
-                                                        <img src="{{asset('images/'.$device->picture)}}"
+                                                        <img src="{{asset('uploads/'.$device->picture)}}"
                                                              alt="modalDetail">
-                                                             <p>Estimated price: <span id="price-tag"></span></p>
+                                                             <p>Estimated price: <span class="price-tag"></span></p>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
@@ -318,9 +318,9 @@
                                             <div class="row">
                                                 <div class="col-md-6">
                                                     <div class="modalImg">
-                                                        <img src="{{asset('images/'.$device->picture)}}"
+                                                        <img src="{{asset('uploads/'.$device->picture)}}"
                                                              alt="modalDetail">
-                                                             <p>Estimated price: <span id="price-tag"></span></p>
+                                                             <p>Estimated price: <span class="price-tag"></span></p>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
@@ -356,9 +356,9 @@
                                             <div class="row">
                                                 <div class="col-md-6">
                                                     <div class="modalImg">
-                                                        <img src="{{asset('images/'.$device->picture)}}"
+                                                        <img src="{{asset('uploads/'.$device->picture)}}"
                                                              alt="modalDetail">
-                                                             <p>Estimated price: <span id="price-tag"></span></p>
+                                                             <p>Estimated price: <span class="price-tag"></span></p>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
@@ -414,9 +414,9 @@
                                             <div class="row">
                                                 <div class="col-md-6">
                                                     <div class="modalImg">
-                                                        <img src="{{asset('images/'.$device->picture)}}"
+                                                        <img src="{{asset('uploads/'.$device->picture)}}"
                                                              alt="modalDetail">
-                                                             <p>Estimated price: <span id="price-tag"></span></p>
+                                                             <p>Estimated price: <span class="price-tag"></span></p>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
@@ -473,9 +473,9 @@
                                             <div class="row">
                                                 <div class="col-md-6">
                                                     <div class="modalImg">
-                                                        <img src="{{asset('images/'.$device->picture)}}"
+                                                        <img src="{{asset('uploads/'.$device->picture)}}"
                                                              alt="modalDetail">
-                                                             <p>Estimated price: <span id="price-tag"></span></p>
+                                                             <p>Estimated price: <span class="price-tag"></span></p>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
@@ -508,16 +508,36 @@
                                 </fieldset>
 
 
+
                                 <fieldset>
                                     <div class="form-card">
                                         <h2 class="stepNumber">90%</h2>
+                                        <br><br>
+                                        <div class="capacity">
+                                            <div class="row">
+                                                <div class="text-center">
+                                                    <h2 id="estimated_price"></h2>
+                                                    <h2 class="mb-4">Estimated price: <span id="final-price"></span></h2>
+                                                    <div class="d-flex justify-content-center">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <input type="button" name="next" class="next action-button" value="Continue forward"/>
+                                </fieldset>
+
+
+                                <fieldset>
+                                    <div class="form-card">
+                                        <h2 class="stepNumber">95%</h2>
                                         <div class="capacity">
                                             <div class="row">
                                                 <div class="col-md-6">
                                                     <div class="modalImg">
-                                                        <img src="{{asset('images/'.$device->picture)}}"
+                                                        <img src="{{asset('uploads/'.$device->picture)}}"
                                                              alt="modalDetail">
-                                                             <p>Estimated price: <span id="price-tag"></span></p>
+                                                        <p>Estimated price: <span class="price-tag"></span></p>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
@@ -547,6 +567,7 @@
                                     <input type="button" name="previous" class="previous action-button-previous"
                                            value="Previous"/>
                                 </fieldset>
+
                                 <fieldset>
                                     <div class="form-card">
                                         <h2 class="stepNumber">100%</h2>
@@ -612,19 +633,24 @@
 
                 var has_problems = false;
 
-                $('#price-tag').html(estimated_price)
+                $('.price-tag').html(estimated_price)
 
                 for (const [key, value] of Object.entries(all_capacities)) {
                     if (device.capacity[key] == 0) {
                         selected_capacity = value;
                     }
                 }
+
                 $(document).ready(function () {
+
+                    selected_color = $('input[name=color-pick]:checked').val();
                     $.ajaxSetup({
                         headers: {
                             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                         }
                     });
+
+                    $()
 
                     $('input[type=radio][name=capacity-input]').change(function () {
                         selected_capacity = $(this).val()
@@ -686,6 +712,7 @@
 
                     $('input[name="next"]').click(function () {
                         current_step += 1;
+                        console.log(current_step)
                         if(current_step == 5 && !selected_optimal_test) {
                             // current_step += 1;
                             $('#screen-fieldset-next').click();
@@ -695,6 +722,10 @@
                         }
                         if(current_step == 2) {
                             $('#device_variant').html(` ${selected_capacity} ${selected_color}`)
+                        }
+
+                        if(current_step == 8) {
+                            $('#final-price').html(estimated_price)
                         }
                         // check_disabled_next()
                     });
@@ -782,7 +813,8 @@
 
                     console.log(estimated_price)
 
-                    $('#price-tag').html(estimated_price)
+                    $('.price-tag').html(estimated_price)
+                    $('#final-price').html(estimated_price)
                 }
             </script>
 @endsection

@@ -4,8 +4,8 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 
     <div class="container">
-        <h1 class="text-center">Edit Device</h1>
-        <div id="accordion">
+        <h1 class="text-center mt-3">Edit Device</h1>
+        <div id="accordion" class="mt-3">
 
             <!-- First Collapse -->
             <div class="card">
