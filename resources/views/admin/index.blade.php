@@ -8,7 +8,6 @@
                     <a href="{{ route('device') }}"><button class="btn btn-primary" type="button" >Add Device</button></a>
                 </div>
             </div>
-            <div class="row">
                 <div class="row row-cols-1 row-cols-sm-1 row-cols-md-4 row-cols-lg-5 row-cols-xl-5">
                     @foreach($devices as $device)
                         <div class="col">
@@ -26,6 +25,5 @@
                         </div>
                     @endforeach
                 </div>
-            </div>
         </div>
 @endsection

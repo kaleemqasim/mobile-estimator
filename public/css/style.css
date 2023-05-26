@@ -709,67 +709,37 @@ hr {
     width: 100%;
     position: relative;
 }
-.progress span:nth-child(1) {
+.progress span {
     width: 20px;
     background-color: white;
     height: 3px;
     position: absolute;
+}
+.progress span:nth-child(1) {
     left: 10%;
 }
 .progress span:nth-child(2) {
-    width: 20px;
-    background-color: white;
-    height: 3px;
-    position: absolute;
     left: 20%;
 }
 .progress span:nth-child(3) {
-    width: 20px;
-    background-color: white;
-    height: 3px;
-    position: absolute;
     left: 30%;
 }
 .progress span:nth-child(4) {
-    width: 20px;
-    background-color: white;
-    height: 3px;
-    position: absolute;
     left: 40%;
 }
 .progress span:nth-child(5) {
-    width: 20px;
-    background-color: white;
-    height: 3px;
-    position: absolute;
     left: 50%;
 }
 .progress span:nth-child(6) {
-    width: 20px;
-    background-color: white;
-    height: 3px;
-    position: absolute;
     left: 60%;
 }
 .progress span:nth-child(7) {
-    width: 20px;
-    background-color: white;
-    height: 3px;
-    position: absolute;
     left: 70%;
 }
 .progress span:nth-child(8) {
-    width: 20px;
-    background-color: white;
-    height: 3px;
-    position: absolute;
     left: 80%;
 }
 .progress span:nth-child(9) {
-    width: 20px;
-    background-color: white;
-    height: 3px;
-    position: absolute;
     left: 90%;
 }
 .progress-bar {
@@ -785,9 +755,8 @@ hr {
     .stepForm {
         width: 100%;
     }
-    .progress {
-        height: 3px;
-        width: 90%;
+    .progress span {
+        width: 10px;
     }
 }
 @media screen and (max-width: 660px) {
@@ -796,10 +765,6 @@ hr {
     }
     .progress-bars .step p {
         display: none;
-    }
-    .progress {
-        height: 3px;
-        width: 80%;
     }
     .progress-bars .step .bullet::after,
     .progress-bars .step .bullet::before {
@@ -823,7 +788,16 @@ hr {
         align-items: center;
         justify-content: center;
     }
-    .capacity .modalImg img {
+    .capacity .modalImg {
         margin-bottom: 40px;
+    }
+    .capacity h4 {
+        margin-bottom: 0;
+    }
+    .form-card {
+        margin-top: 0;
+    }
+    .heading h1 {
+        font-size: 28px;
     }
 }
